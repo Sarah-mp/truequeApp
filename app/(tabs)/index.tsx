@@ -1,74 +1,43 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import MessageCard from '@/components/MessageCard';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View>
+
+    <MessageCard
+    name="Aura"  
+    message="I live in the shadow that determines me, I sleep and wake in your essential dawn:Sweet as grapes, and terrible, conductor of sugar and punishment,soaked in the water of your species, suckled in the blood of your heritage." 
+    avatarUrl='https://img.freepik.com/vector-gratis/cute-girl-gaming-holding-joystick-cartoon-icon-illustration-concepto-icono-tecnologia-personas-aislado-estilo-dibujos-animados-plana_138676-2169.jpg?t=st=1740454915~exp=1740458515~hmac=f2eab3f8cc0e507454ac0978729c75674289771779c59e5993a0a9300777462d&w=740'
+    interests={['Music', 'Food', 'Culture', 'Drinks', 'Sport', 'Travel', 'Fun', 'Business', 'Art']}> 
+    </MessageCard>
+
+   
+     
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  cajon: {
+   
+    borderColor: '#2a1e5c',
+    borderWidth: 5,
+    backgroundAttachment: 'center',
+    borderRadius: 10,
+    width: 200,
+    height: 100,
+    borderStyle: 'solid',
+    backgroundColor: '#D4D9D8',
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+    flexDirection: 'column',
+    
+  
   },
 });
