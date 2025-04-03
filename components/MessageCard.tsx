@@ -8,7 +8,7 @@ export default function MessageCard
   message= 'holiii', 
   avatarUrl = '',
   interests = ['interest1', 'interest2', 'interest3', 'interest4']
-}: MessageCardProps) {
+}) {
   return (
     <View style={styles.fondo}>
     <View style={styles.card}>

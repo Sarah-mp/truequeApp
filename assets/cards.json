@@ -1,0 +1,14 @@
+[
+  {
+    "user_name": "John Doe",
+    "text": "Hello, world!",
+    "image": "https://img.freepik.com/vector-gratis/cute-girl-gaming-holding-joystick-cartoon-icon-illustration-concepto-icono-tecnologia-personas-aislado-estilo-dibujos-animados-plana_138676-2169.jpg?t=st=1740454915~exp=1740458515~hmac=f2eab3f8cc0e507454ac0978729c75674289771779c59e5993a0a9300777462d&w=740",
+    "hobbies": ["reading", "hiking"]
+  },
+  {
+    "user_name": "Jane Smith",
+    "text": "Another message",
+    "image": "http://example.com/jane.png",
+    "hobbies": ["coding", "music"]
+  }
+]

@@ -1,31 +1,49 @@
 import { Image, StyleSheet, Platform, View } from 'react-native';
-
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import MessageCard from '@/components/MessageCard';
+import CardService from '@/application/servicios/CardService';
+import { useEffect, useState } from 'react';
+import { Card } from '@/infraestructure/adapters/CardAdapter';
 
 export default function HomeScreen() {
+  const [cardData, setCardData] = useState<Card | null>(null); // Assuming Card interface
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await CardService.getCardData();
+        if (data && data.length > 0) {
+          setCardData(data[0]); // Assuming you want to display the first card
+        }
+      } catch (error) {
+        console.error("Error fetching card data:", error);
+      }
+
+    };
+    fetchData();
+  }, []);
   return (
     <View>
-
-    <MessageCard
-    name="Aura"  
-    message="I live in the shadow that determines me, I sleep and wake in your essential dawn:Sweet as grapes, and terrible, conductor of sugar and punishment,soaked in the water of your species, suckled in the blood of your heritage." 
-    avatarUrl='https://img.freepik.com/vector-gratis/cute-girl-gaming-holding-joystick-cartoon-icon-illustration-concepto-icono-tecnologia-personas-aislado-estilo-dibujos-animados-plana_138676-2169.jpg?t=st=1740454915~exp=1740458515~hmac=f2eab3f8cc0e507454ac0978729c75674289771779c59e5993a0a9300777462d&w=740'
-    interests={['Music', 'Food', 'Culture', 'Drinks', 'Sport', 'Travel', 'Fun', 'Business', 'Art']}> 
-    </MessageCard>
-
-   
-     
+      {cardData ? (
+        <MessageCard
+          name={cardData.name}
+          message={cardData.message}
+          avatarUrl={cardData.avatarUrl}
+          interests={cardData.interests}
+        />
+      ) : (
+        <ThemedText>Loading card...</ThemedText> // Or some default content
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   cajon: {
-   
+
     borderColor: '#2a1e5c',
     borderWidth: 5,
     backgroundAttachment: 'center',
@@ -37,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    
-  
+
+
   },
 });

@@ -1,4 +1,4 @@
-interface MessageCardProps {
+export interface Card{
     name: string;
     message: string;
     avatarUrl: string;
