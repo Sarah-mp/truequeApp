@@ -5,7 +5,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 export default function MessageCard
  ({ 
   name = "Name Name", 
-  message= 'holiii', 
+  message= 'ahahhaha', 
   avatarUrl = '',
   interests = ['interest1', 'interest2', 'interest3', 'interest4']
 }) {
