@@ -1,12 +1,12 @@
-import { Image, StyleSheet, Platform, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import MessageCard from '@/components/MessageCard';
-import CardService from '@/application/servicios/CardService';
 import { useEffect, useState } from 'react';
-import { Card } from '@/infraestructure/adapters/CardAdapter';
+import { Card } from '@/domain/entities/Card';
+import CardService from '@/application/servicios/CardService';
 
 export default function HomeScreen() {
   const [cardData, setCardData] = useState<Card | null>(null); // Assuming Card interface
