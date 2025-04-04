@@ -7,7 +7,7 @@ export default function MessageCard
   name = "Name Name", 
   message= 'ahahhaha', 
   avatarUrl = '',
-  interests = ['interest1', 'interest2', 'interest3', 'interest4']
+  interests = ['interest1holi', 'interest2', 'interest3', 'interest4']
 }) {
   return (
     <View style={styles.fondo}>
