@@ -7,6 +7,7 @@ import MessageCard from '@/components/MessageCard';
 import { useEffect, useState } from 'react';
 import { Card } from '@/domain/entities/Card';
 import CardService from '@/application/servicios/CardService';
+import SimpleButton from '@/components/SimpleButton';
 
 export default function HomeScreen() {
   const [cardData, setCardData] = useState<Card | null>(null); // Assuming Card interface
@@ -27,6 +28,7 @@ export default function HomeScreen() {
   }, []);
   return (
     <View>
+            <SimpleButton title={'boton'} onPress={() => {}} />
       {cardData ? (
         <MessageCard
           name={cardData.name}
@@ -37,6 +39,7 @@ export default function HomeScreen() {
       ) : (
         <ThemedText>Loading card...</ThemedText> // Or some default content
       )}
+
     </View>
   );
 }
