@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { TextInput } from 'react-native-paper';
 
-const formulario = () => {
-  const [text, setText] = React.useState("");
+type propsFormulario = {
+  texto: string | undefined;
+  label: string | undefined;
+}
 
+const formulario = ({ texto, label }: propsFormulario) => {
+    const [text, setText] = React.useState(texto);
   return (
     <TextInput
-      label="Email"
-      value={text}
-      onChangeText={text => setText(text)}
+    mode="outlined"
+    outlineColor="#ffffff"
+    label={label}
+    value={text}
     />
   );
 };

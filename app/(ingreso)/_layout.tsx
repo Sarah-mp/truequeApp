@@ -23,6 +23,7 @@ export default function IngresoLayout() {
       }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="details" />
+      <Stack.Screen name="registro" />
     </Stack>
   );
 }
