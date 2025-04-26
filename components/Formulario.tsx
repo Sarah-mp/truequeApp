@@ -7,12 +7,12 @@ type propsFormulario = {
   outlineColor: string | undefined;
 }
 
-const formulario = ({ texto, label }: propsFormulario) => {
+const formulario = ({ texto, label,outlineColor }: propsFormulario) => {
     const [text, setText] = React.useState(texto);
   return (
     <TextInput
     mode="outlined"
-    outlineColor="#ffffff"
+    outlineColor={outlineColor}
     label={label}
     value={text}
     />
