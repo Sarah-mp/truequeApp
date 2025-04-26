@@ -20,9 +20,10 @@ export default function HomeScreen() {
         <View>
         <Formulario label='Correo Electrónico' texto='' outlineColor='#0100FE'   ></Formulario> 
         <Contraseña label='Contraseña'></Contraseña>
-        <Link href={"/registro"}><Boton texto="INICIAR SESIÓN" colorFondo='#4361ee'></Boton></Link>
-        <Botontext></Botontext>
-        <Boton texto="Continuar con Google" colorFondo='#ced4da'> </Boton>
+        <Link href={"/registro"}><Boton texto="INICIAR SESIÓN" colorFondo='#0100FE'></Boton></Link>
+        <Botontext texto="¿Olvidó su contraseña?" colorFondo='#999999' colorTexto='#0100FE'></Botontext>
+        <Botontext texto="Regístrate" colorFondo='#999999' colorTexto='#0100FE'></Botontext>
+        <Boton  texto="Continuar con Google" colorFondo='#ced4da'> </Boton>
         </View>
         
      </SafeAreaView>
