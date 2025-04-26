@@ -8,6 +8,17 @@
   }
 
   .logo{
-background-color: #0100FE;
+background-color: rgb(255, 0, 0);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.iniciose{
+background-color: seashell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 
   }
