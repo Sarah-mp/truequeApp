@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Button } from 'react-native-paper';
 
+
 type propsBoton = {
     texto: string | undefined;
     colorFondo: string | undefined;
