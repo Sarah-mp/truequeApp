@@ -7,6 +7,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import '../../assets/Style.css';
+import Logo from '@/components/logo';
 
 
 export default function HomeScreen() {
@@ -14,8 +15,9 @@ export default function HomeScreen() {
     
         return (
     <View >
-   
-      <Text >TrueQ U</Text>
+   <view className='logo' >
+      <Logo ></Logo>
+      </view>
       <SafeAreaView>
         <View>
         <Formulario label='Correo Electrónico' texto='' outlineColor='#0100FE'   ></Formulario> 
