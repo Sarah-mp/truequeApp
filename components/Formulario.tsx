@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper';
 type propsFormulario = {
   texto: string | undefined;
   label: string | undefined;
+  outlineColor: string | undefined;
 }
 
 const formulario = ({ texto, label }: propsFormulario) => {

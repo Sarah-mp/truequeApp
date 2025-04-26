@@ -17,11 +17,11 @@ export default function HomeScreen() {
       <Text >TrueQ U</Text>
       <SafeAreaView>
         <View>
-        <Formulario></Formulario> 
-        <Formulario></Formulario> 
-        <Formulario></Formulario> 
+        <Formulario label='Nombre Completo' texto='Ingrese aquí su nombre completo'  ></Formulario> 
+        <Formulario label='Corrreo Institucional' texto='Ingrese aquí su Correo Institucional' ></Formulario> 
+        <Formulario label='Usuario' texto='ingrese aquí su usuario' ></Formulario> 
         <Contraseña></Contraseña>
-        <Boton texto="unete" colorFondo='#ffffff'></Boton>
+        <Boton texto="ÚNETE" colorFondo='#0100FE'></Boton>
         <Botontext></Botontext>
         </View>
         
