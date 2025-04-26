@@ -19,7 +19,7 @@ export default function HomeScreen() {
         <View>
         <Formulario label='Nombre Completo' texto='Ingrese aquí su nombre completo'  ></Formulario> 
         <Formulario label='Corrreo Institucional' texto='Ingrese aquí su Correo Institucional' ></Formulario> 
-        <Formulario label='Usuario' texto='ingrese aquí su usuario' ></Formulario> 
+        <Formulario label='Usuario' texto='Ingrese aquí su usuario' ></Formulario> 
         <Contraseña></Contraseña>
         <Boton texto="ÚNETE" colorFondo='#0100FE'></Boton>
         <Botontext></Botontext>
