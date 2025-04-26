@@ -1,3 +1,6 @@
+import Boton from '@/components/Boton';
+import Botontext from '@/components/Botontext';
+import Contraseña from '@/components/Contraseña';
 import Formulario from '@/components/Formulario';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
@@ -15,6 +18,10 @@ export default function HomeScreen() {
       <SafeAreaView>
         <View>
         <Formulario></Formulario> 
+        <Contraseña></Contraseña>
+        <Boton></Boton>
+        <Botontext></Botontext>
+        <Boton></Boton>
         </View>
         
      </SafeAreaView>
