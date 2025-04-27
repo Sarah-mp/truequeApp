@@ -1,15 +1,19 @@
-import { adaptCards } from '@/infraestructure/adapters/CardAdapter';
+import { adaptCard } from '@/domain/servicios/adaptCard';
 import { Card } from '@/domain/entities/Card';
 
-async function getCardData(): Promise<Card[]> {
-  try {
-    return await adaptCards();
-  } catch (error) {
-    console.error('Error reading card data:', error);
-    return [];
+export class CardData {
+  static getCardData(): Promise<Card[]> {
+    return fetch('https://jsonplaceholder.typicode.com/posts').then(
+      (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      },
+    ).then((data) => {
+      return data.map((item: any) => adaptCard(item));
+    });
   }
 }
 
-export default {
-  getCardData,
-};
+export default CardData;
