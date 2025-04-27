@@ -1,5 +1,6 @@
 import { Stack, Tabs } from 'expo-router';
 import React from 'react';
+
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
