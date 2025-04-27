@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextInput } from 'react-native-paper';
 
 type propsFormulario = {
-  texto: string | undefined;
+  texto?: string | undefined;
   label: string | undefined;
   outlineColor: string | undefined;
 }
@@ -15,6 +15,7 @@ const formulario = ({ texto, label,outlineColor }: propsFormulario) => {
     outlineColor={outlineColor}
     label={label}
     value={text}
+      onChangeText={text => setText(text)}
     />
   );
 };
