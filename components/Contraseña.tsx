@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper';
 type propsFormulario = {
   label: string | undefined;
   
+  
 }
 
 const contraseña = ({ label }: propsFormulario) => {
@@ -12,6 +13,7 @@ const contraseña = ({ label }: propsFormulario) => {
   return (
     <TextInput
       label={label}
+      mode="outlined"
       secureTextEntry
       right={<TextInput.Icon icon="eye" />}
     />

@@ -4,57 +4,62 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from "@/components/logo";
-import Boton from "@/components/Boton";
 import GeneralBoton from "@/components/GeneralBoton";
 
 export default function HomeScreen() {
   return (
     <View>
       <View style={styles.logoContainer}>
-        <Logo source={require("@/assets/iconos/hamburguesa.png")}></Logo>
-        <Logo
-          source={require("@/assets/iconos/hamburguesa.png")}
-          height={30}
-          width={30}
-          style={styles.logoStyles}
+         <Logo
+          source={require("@/assets/Icons/Nombre.png")}
+          height={100}
+          width={100}
         ></Logo>
-        <Logo></Logo>
       </View>
+
       <SafeAreaView>
-        <View>
-          <View>
+        <View style={styles.GeneralContainer}  >
+          <View style={{marginTop: 60, marginBottom: 60, gap: 20}} >
             <Formulario
               label="Correo Electrónico"
               texto=""
               outlineColor="#0100FE"
-            ></Formulario>
-            <Contraseña label="Contraseña"></Contraseña>
-          </View>
-          <View className="iniciose">
+            ></Formulario>  
+         
+            <Contraseña 
+            label="Contraseña"
+            ></Contraseña>
+
             <GeneralBoton
               texto="INICIAR SESIÓN"
-              colorFondo="#999999"
-              colorTexto="#0100FE"
+              colorFondo="#0100FE"
+              colorTexto="#ffffff"
             ></GeneralBoton>
-          </View>
-          <View>
+
+          <View style={styles.BotonesContainer}>
             <GeneralBoton
               texto="¿Olvidó su contraseña?"
-              colorFondo="#999999"
-              colorTexto="#0100FE"
+              colorFondo="#ffffff"
+              colorTexto="#999999"
             ></GeneralBoton>
             <GeneralBoton
               texto="Regístrate"
-              colorFondo="#999999"
-              colorTexto="#0100FE"
+              colorFondo="#ffffff"
+              colorTexto="#999999"
               ruta={"/registro"}
             ></GeneralBoton>
           </View>
-          <Boton
-            colorTexto=""
+
+          <GeneralBoton
             texto="Continuar con Google"
             colorFondo="#ced4da"
+            colorTexto="#999999"
           />
+          </View>
+
+          
+         
+          
         </View>
       </SafeAreaView>
     </View>
@@ -62,15 +67,29 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  GeneralContainer:{
+  
+    display: "flex",
+    flexDirection: "column",  
+    flex: 1,  
+     alignItems: "center",
+    justifyContent: "space-evenly", 
+    alignContent: "space-around"
+
+  },
+  
   logoContainer: {
     width: "100%",
-    height: "auto",
-    backgroundColor: "cyan",
+    height: "60%",
+    backgroundColor: "#0100FE",
     alignItems: "center",
     justifyContent: "center",
   },
-  logoStyles: {
-    backgroundColor: "yellow",
-    borderRadius: "1rem",
-  },
+
+  BotonesContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  }
 });

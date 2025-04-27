@@ -1,21 +1,18 @@
 import * as React from "react";
 import { Button } from "react-native-paper";
+import { Text } from 'react-native-paper';
 
 type propsBoton = {
-  texto: string | undefined;
-  colorFondo: string | undefined;
-  colorTexto?: string | undefined;
+  label: string | undefined;
+
 };
 
-const Boton = ({ texto, colorFondo, colorTexto }: propsBoton) => (
-  <Button
-    icon="camera"
-    mode="contained"
-    buttonColor={colorFondo}
-    onPress={() => console.log("Pressed")}
-  >
-    {texto}
-  </Button>
+const Boton = ({ label}: propsBoton) => (
+ 
+  <Text variant="titleMedium">{label}</Text>
+  
+  
+  
 );
 
 export default Boton;
