@@ -8,7 +8,7 @@ import GeneralBoton from "@/components/GeneralBoton";
 
 export default function HomeScreen() {
   return (
-    <View>
+    <View style={styles.padreContainer}>
       <View style={styles.logoContainer}>
          <Logo
           source={require("@/assets/Icons/Nombre.png")}
@@ -67,12 +67,18 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  GeneralContainer:{
+  padreContainer: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   
+  GeneralContainer:{
     display: "flex",
     flexDirection: "column",  
     flex: 1,  
-     alignItems: "center",
+    alignItems: "center",
     justifyContent: "space-evenly", 
     alignContent: "space-around"
 
@@ -80,7 +86,7 @@ const styles = StyleSheet.create({
   
   logoContainer: {
     width: "100%",
-    height: "60%",
+    height: "50%",
     backgroundColor: "#0100FE",
     alignItems: "center",
     justifyContent: "center",
