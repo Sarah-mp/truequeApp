@@ -2,22 +2,22 @@ import * as React from 'react';
 import { TextInput } from 'react-native-paper';
 
 type propsFormulario = {
-  texto?: string | undefined;
-  label: string | undefined;
-  outlineColor: string | undefined;
+  texto?: string;
+  label: string;
+  outlineColor: string;
+  onChangeText?: (text: string) => void;
 }
 
-const formulario = ({ texto, label,outlineColor }: propsFormulario) => {
-    const [text, setText] = React.useState(texto);
+const Formulario = ({ texto, label, outlineColor, onChangeText }: propsFormulario) => {
   return (
     <TextInput
-    mode="outlined"
-    outlineColor={outlineColor}
-    label={label}
-    value={text}
-      onChangeText={text => setText(text)}
+      mode="outlined"
+      outlineColor={outlineColor}
+      label={label}
+      value={texto}
+      onChangeText={onChangeText}
     />
   );
 };
 
-export default formulario;
+export default Formulario;

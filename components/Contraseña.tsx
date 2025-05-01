@@ -1,23 +1,26 @@
 import * as React from 'react';
 import { TextInput } from 'react-native-paper';
 
-type propsFormulario = {
-  label: string | undefined;
-  
-  
-}
+type propsContraseña = {
+  label: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  outlineColor?: string; 
+};
 
-const contraseña = ({ label }: propsFormulario) => {
-  const [text, setText] = React.useState('');
-
+const Contraseña = ({ label, value, onChangeText, outlineColor }: propsContraseña) => {
   return (
     <TextInput
       label={label}
       mode="outlined"
       secureTextEntry
+      value={value}
+      onChangeText={onChangeText}
+      outlineColor={outlineColor} 
       right={<TextInput.Icon icon="eye" />}
     />
   );
 };
 
-export default contraseña;
+
+export default Contraseña;
