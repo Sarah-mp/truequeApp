@@ -7,6 +7,8 @@ type PropsGeneralBoton = {
   colorFondo?: string;
   colorTexto?: string;
   ruta?: LinkProps["href"];
+  onPress?: () => void;
+  disabled?: boolean;
 };
 
 const GeneralBoton: React.FC<PropsGeneralBoton> = ({
@@ -14,14 +16,18 @@ const GeneralBoton: React.FC<PropsGeneralBoton> = ({
   colorFondo = "#999999",
   colorTexto = "#000000",
   ruta,
+  onPress,
+  disabled = false,
 }) => {
   const router = useRouter();
 
   const handlePress = () => {
-    if (ruta) {
+    if (onPress) {
+      onPress();
+    } else if (ruta) {
       router.push(ruta);
     } else {
-      console.log("Botón presionado sin ruta");
+      console.log("Botón presionado sin acción");
     }
   };
 
@@ -32,6 +38,7 @@ const GeneralBoton: React.FC<PropsGeneralBoton> = ({
       buttonColor={colorFondo}
       textColor={colorTexto}
       onPress={handlePress}
+      disabled={disabled}
     >
       {texto}
     </Button>
