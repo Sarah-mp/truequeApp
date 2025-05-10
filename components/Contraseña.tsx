@@ -18,6 +18,7 @@ const Contraseña = ({ label, value, onChangeText, outlineColor }: propsContrase
       onChangeText={onChangeText}
       outlineColor={outlineColor} 
       right={<TextInput.Icon icon="eye" />}
+      style={{ backgroundColor: "#F5F5F5", borderRadius: 12 }}
     />
   );
 };

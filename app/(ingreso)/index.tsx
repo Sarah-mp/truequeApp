@@ -9,9 +9,9 @@ import { router } from "expo-router";
 import { FirebaseAuthAdapter } from "@/infraestructure/adapters/FirebaseAuthAdapter";
 import { makeRedirectUri } from "expo-auth-session";
 import * as Google from 'expo-auth-session/providers/google';
+import RecuperarContrasena from "./RecuperarContrasena";
 
 export default function HomeScreen() {
-
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID!,
     redirectUri: makeRedirectUri({ useProxy: true } as any),
@@ -87,18 +87,18 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.padreContainer}>
-      <View style={styles.logoContainer}>
+    <View style={styles.container}>
+      <View style={styles.topContainer}>
         <Logo
           source={require("@/assets/Icons/Nombre.png")}
           height={100}
           width={100}
-        ></Logo>
+        />
       </View>
-
-      <SafeAreaView>
-        <View style={styles.GeneralContainer}>
-          <View style={{ marginTop: 60, marginBottom: 60, gap: 20 }}>
+  
+      <View style={styles.bottomContainer}>
+        <SafeAreaView>
+          <View style={styles.formContainer}>
             <Formulario
               label="Correo Electrónico"
               texto={email}
@@ -109,7 +109,7 @@ export default function HomeScreen() {
               }}
               outlineColor={emailError ? "#ff0000" : "#0100FE"}
             />
-
+  
             <Contraseña
               label="Contraseña"
               value={password}
@@ -118,38 +118,36 @@ export default function HomeScreen() {
                 setPasswordError(false);
                 setErrorMessage("");
               }}
-              outlineColor={passwordError ? "#ff0000" : "#0100FE"} // Asegúrate que `Contraseña` acepte esto
+              outlineColor={passwordError ? "#ff0000" : "#0100FE"}
             />
-
+  
             <GeneralBoton
               texto={loading ? "Cargando..." : "INICIAR SESIÓN"}
               colorFondo="#0100FE"
               colorTexto="#ffffff"
               onPress={handleLogin}
               disabled={loading}
-            ></GeneralBoton>
-            {errorMessage ? (
-              <Text
-                style={{ color: "red", textAlign: "center", marginBottom: 10 }}
-              >
-                {errorMessage}
-              </Text>
-            ) : null}
-
-            <View style={styles.BotonesContainer}>
+            />
+  
+            {errorMessage && (
+              <Text style={styles.errorMessage}>{errorMessage}</Text>
+            )}
+  
+            <View style={styles.linksContainer}>
               <GeneralBoton
                 texto="¿Olvidó su contraseña?"
                 colorFondo="#ffffff"
                 colorTexto="#999999"
-              ></GeneralBoton>
+                onPress={() => router.push("/RecuperarContrasena")}
+              />
               <GeneralBoton
                 texto="Regístrate"
                 colorFondo="#ffffff"
                 colorTexto="#999999"
                 onPress={() => router.push("/registro")}
-              ></GeneralBoton>
+              />
             </View>
-
+  
             <GeneralBoton
               texto="Continuar con Google"
               colorFondo="#ced4da"
@@ -158,41 +156,42 @@ export default function HomeScreen() {
               disabled={loading}
             />
           </View>
-        </View>
-      </SafeAreaView>
+        </SafeAreaView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  padreContainer: {
+  container: {
     flex: 1,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  GeneralContainer: {
-    display: "flex",
-    flexDirection: "column",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    alignContent: "space-around",
-  },
-
-  logoContainer: {
-    width: "100%",
-    height: "50%",
     backgroundColor: "#0100FE",
+  },
+  topContainer: {
+    height: "40%",
     alignItems: "center",
     justifyContent: "center",
   },
-
-  BotonesContainer: {
-    display: "flex",
+  bottomContainer: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+    borderTopRightRadius: 40,
+    paddingTop: 40,
+    paddingHorizontal: 20,
+  },
+  formContainer: {
+    gap: 20,
+    width: "100%",
+    maxWidth: 400,
+    alignSelf: "center",
+    paddingHorizontal: 20,
+  },
+  linksContainer: {
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
+  },
+  errorMessage: {
+    color: "red",
+    textAlign: "center",
   },
 });

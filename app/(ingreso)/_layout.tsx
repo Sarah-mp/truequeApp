@@ -20,11 +20,13 @@ export default function IngresoLayout() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        
+        headerShown: false,
       }}>
       <Stack.Screen name="index" />
-      <Stack.Screen name="details" />
       <Stack.Screen name="registro" />
+      <Stack.Screen name="RecuperarContrasena" />
+      <Stack.Screen name="details" />
+      <Stack.Screen name="auth" />
     </Stack>
   );
 }
