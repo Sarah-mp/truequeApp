@@ -6,7 +6,7 @@ type PropsGeneralBoton = {
   texto: string;
   colorFondo?: string;
   colorTexto?: string;
-  ruta?: LinkProps["href"];
+  ruta?: string;
   onPress?: () => void;
   disabled?: boolean;
 };

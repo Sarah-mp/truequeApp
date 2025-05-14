@@ -9,7 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-
+import { FirebaseProvider } from "@/providers/FirebaseProvider";
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -34,11 +34,14 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "light" ? DarkTheme : DefaultTheme}>
+      <FirebaseProvider>
       <Stack>
         <Stack.Screen name="(ingreso)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
+      </FirebaseProvider>
     </ThemeProvider>
+    
   );
 }

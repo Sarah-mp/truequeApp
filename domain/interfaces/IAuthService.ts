@@ -7,4 +7,6 @@ export interface IAuthService {
   logout(): Promise<void>;
   getCurrentUser(): Promise<User | null>;
   isAuthenticated(): Promise<boolean>;
+  sendPasswordReset(email: string): Promise<void>;
+  loginWithGoogle(accessToken: string): Promise<User>;
 }

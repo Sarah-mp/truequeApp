@@ -5,6 +5,7 @@ export type User = {
   password: string;
   displayName?: string;
   photoURL?: string;
+  username?: string; 
   createdAt: Date;
   updatedAt: Date;
 };
