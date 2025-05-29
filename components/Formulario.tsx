@@ -20,4 +20,4 @@ const Formulario = ({ texto, label, outlineColor, onChangeText }: propsFormulari
   );
 };
 
-export default Formulario;
+export default Formulario; 
