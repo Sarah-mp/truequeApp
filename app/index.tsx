@@ -56,7 +56,7 @@ export default function HomeScreen() {
     try {
       setLoading(true);
       await authService.login(email, password);
-      router.replace("/(tabs)");
+      router.replace("/productos");
     } catch (error: any) {
       if (error.message === "Credenciales inválidas") {
         setErrorMessage("Correo o contraseña incorrectos");
@@ -77,7 +77,7 @@ export default function HomeScreen() {
       const result = await promptAsync({ useProxy: true } as any);
       if (result?.type === "success" && result.authentication?.accessToken) {
         await authService.loginWithGoogle(result.authentication.accessToken);
-        router.replace("/(tabs)");
+        router.replace("/productos");
       } else {
         setErrorMessage("Autenticación cancelada");
       }

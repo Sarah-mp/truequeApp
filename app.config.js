@@ -1,3 +1,5 @@
+import { getDataConnect } from "firebase-admin/data-connect";
+
 // app.config.js
 export default {
   expo: {

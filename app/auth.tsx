@@ -10,7 +10,7 @@ export default function AuthScreen() {
             if (user) {
                 router.replace('/');
             } else {
-                router.replace('/(ingreso)');
+                router.replace('/productos');
             }
         });
         return () => unsubscribe();
