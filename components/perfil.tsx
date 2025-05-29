@@ -1,44 +1,17 @@
 // components/perfil.tsx
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-  FlatList,
-  Platform,
-} from "react-native";
+import {View,Text,TextInput,Image,TouchableOpacity,StyleSheet,Alert,FlatList,Platform,} from "react-native";
 import { useFocusEffect, useRouter } from "expo-router";
-import {
-  onAuthStateChanged,
-  signOut,
-  deleteUser,
-  updateProfile,
-  User,
-} from "firebase/auth";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import {onAuthStateChanged,signOut,deleteUser,updateProfile,User,} from "firebase/auth";
+import {collection,deleteDoc,doc,getDoc,getDocs,query,updateDoc,where,onSnapshot,} from "firebase/firestore";
 import * as ImagePicker from "expo-image-picker";
-import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
+import {getStorage,ref as storageRef,uploadBytes,getDownloadURL,} from "firebase/storage";
 import { auth, db } from "@/config/firebase";
+import { FirebaseLikeAdapter } from "@/infraestructure/adapters/FirebaseLikeAdapter";
+import { LikeService }         from "@/domain/servicios/LikeService";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Menu, Divider } from "react-native-paper";
+
 
 export type Post = {
   image: string | undefined;
@@ -81,37 +54,33 @@ export const ProfileScreen: React.FC = () => {
 
   // Carga inicial del perfil
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (currentUser) => {
-      if (!currentUser) {
-        router.replace("/");
-        return;
-      }
+    const unsub = onAuthStateChanged(auth, async currentUser => {
+      if (!currentUser) return router.replace("/");
       setUser(currentUser);
       setAvatarUri(currentUser.photoURL || undefined);
-      // nombre + desc
+
+      // --- Carga nombre y descripción ---
       const udoc = await getDoc(doc(db, "Usuario", currentUser.uid));
       if (udoc.exists()) {
-        const d = udoc.data();
+        const d = udoc.data() as any;
         setFullName(d.fullName || currentUser.displayName || "Anónimo");
         setDescription(d.description || "");
         setTempDesc(d.description || "");
       } else {
         setFullName(currentUser.displayName || "Anónimo");
       }
-      // likes
-      const likesSnap = await getDocs(
-        query(
-          collection(db, "likes"),
-          where("toUserId", "==", currentUser.uid)
-        )
-      );
-      setLikeCount(likesSnap.size);
-      // posts
+
+      // --- CONTEO DE LIKES recibidos por TODOS sus productos ---
+      const likeService = new LikeService(new FirebaseLikeAdapter());
+      const count = await likeService.countLikesForUser(currentUser.uid);
+      setLikeCount(count);
+
+      // --- Carga posts ---
       await fetchPosts();
     });
     return () => unsub();
   }, [router, fetchPosts]);
-
+  
   useFocusEffect(
     useCallback(() => {
       fetchPosts();
@@ -261,11 +230,10 @@ export const ProfileScreen: React.FC = () => {
           )}
           <Text style={styles.email}>{user.email}</Text>
           <Text style={styles.since}>
-            En TrueQ U desde{" "}
-            {new Date(user.metadata.creationTime!).toLocaleDateString()}
+          En TrueQ U desde {new Date(user.metadata.creationTime!).toLocaleDateString()}
           </Text>
           <View style={styles.likesRow}>
-            <MaterialCommunityIcons name="heart" size={20} color="red" />
+            <MaterialCommunityIcons name="heart" size={20} color="red"/>
             <Text style={styles.likesTxt}>{likeCount} likes recibidos</Text>
           </View>
         </View>
